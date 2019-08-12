@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_11_194158) do
+ActiveRecord::Schema.define(version: 2019_08_12_204255) do
+
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "admin"
+    t.integer "lock_version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id"
+    t.index ["user_id", "project_id"], name: "index_projects_users_on_user_id_and_project_id"
+  end
+
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "description"
+    t.integer "lock_version"
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +54,6 @@ ActiveRecord::Schema.define(version: 2019_08_11_194158) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tasks", "projects"
+  add_foreign_key "tasks", "users"
 end

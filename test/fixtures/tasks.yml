@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  lock_version: 1
+  user: one
+  project: one
+  status: 1
+
+two:
+  description: MyText
+  lock_version: 1
+  user: two
+  project: two
+  status: 1
