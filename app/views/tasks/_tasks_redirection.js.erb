@@ -1,0 +1,6 @@
+<%case from%>
+<%when :task_allocation_list%>
+	$("#content-wrapper").html("<%=j render partial:'task_allocation_list'%>");
+<%when :get_user_task_details%>
+	$("#task_detail_section").html("<%=j render partial:'user_task_status_detail'%>");
+<%end%>

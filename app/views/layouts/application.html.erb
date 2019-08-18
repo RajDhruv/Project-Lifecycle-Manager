@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ProjectLifecycleManager</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>ProjectLifecycleManager</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<%if current_user%>
+<body id="page-top">
+  <%= render partial:"shared/navbar.html.erb"%>
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <%= render partial:"shared/sidebar.html.erb"%>
+    <div id="content-wrapper">      
+      <!-- /.container-fluid -->
+        <%= yield %> 
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span><%=Platipus::Renderer.copyright 'Dhruv Raj', 'All rights reserved'%></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- /.content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+</body>
+<%else%>
+  <body class="bg-dark">
+
+  <div class="container">
+      <%= yield %> 
+  </div>
+
+</body>
+<%end%>
 </html>

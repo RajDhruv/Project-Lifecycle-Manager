@@ -1,2 +1,5 @@
-<h1>Home#home_page</h1>
-<p>Find me in app/views/home/home_page.html.erb</p>
+<%if logged_in?(:admin)%>
+	<%=render partial: "admin_dashboard"%>
+<%else%>
+	<%=render partial: "developer_dashboard"%>
+<%end%>

@@ -1,0 +1,26 @@
+<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Map Developers to <%=@project.name%></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Developer Name</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%@unmapped_users.each do |user|%>
+                    <tr>
+                      <td><%=user.name%></td>
+                      <td id="map_user_<%user.id%>"><%= link_to "<span>Map User</span>".html_safe, map_developers_projects_path(id: @project.id, user_id: user.id), method: 'post', remote: true%></td>
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted"></div>
+        </div>

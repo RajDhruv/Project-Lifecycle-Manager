@@ -1,0 +1,16 @@
+<%case from%>
+<%when :new%>
+	$('.sidebar').find('li').removeClass('active');
+	$('#project_new').addClass('active');
+	$("#content-wrapper").html("<%=j render partial:'form',locals:{project:@project,action: :create, action_method: 'post'}%>");
+<%when :manage_projects%>
+	$('.sidebar').find('li').removeClass('active');
+	$('#project_manage').addClass('active');
+	$("#content-wrapper").html("<%=j render partial:'manage_projects',locals:{projects:@projects}%>");
+<%when :add_tasks%>
+	$("#content-wrapper").html("<%=j render partial:'new_tasks'%>");
+<%when :unmapped_developers%>
+	$("#content-wrapper").html("<%=j render partial:'map_developers'%>");
+<%when :map_developers%>
+	$("#map_user_<%@user.id%>").html("<span style='color:green'>Mapped</span>");
+<%end%>

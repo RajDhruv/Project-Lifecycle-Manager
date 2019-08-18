@@ -1,0 +1,13 @@
+<ul class="sidebar navbar-nav">
+      <li class="nav-item active" id="nav_dashboard">
+        <%= link_to "<i class='fas fa-fw fa-tachometer-alt'></i><span>Dashboard</span>".html_safe, home_home_page_path ,class: "nav-link" ,remote: true%>
+      </li>
+      <%if logged_in?(:admin)%>
+        <li class="nav-item" id="project_new">
+          <%= link_to "<i class='fas fa-fw fa-folder'></i><span>New Project</span>".html_safe, projects_path ,class: "nav-link" ,remote: true%>
+        </li>
+        <li class="nav-item" id="project_manage">
+          <%= link_to "<i class='fas fa-fw fa-table'></i><span>Manage Project</span>".html_safe, manage_projects_projects_path ,class: "nav-link" ,remote: true%>
+        </li>
+      <%end%>
+    </ul>

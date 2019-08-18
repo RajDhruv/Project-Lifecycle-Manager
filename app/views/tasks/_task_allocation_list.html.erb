@@ -1,0 +1,47 @@
+<script type="text/javascript">
+	function map_developer_to_task(task_id,developer_id)
+	{
+		if(developer_id!="option")
+		{
+			$.ajax({
+				type: 'post',
+				url: window.location.origin+"/tasks/allocate_task_to_developer?task_id="+task_id+"&user_id="+developer_id,
+			    headers: {
+			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			    }
+			})
+		}
+	}
+</script>
+<div class="card mb-3">
+          <div class="card-header">
+            <h2><%=@project.name%></h2>
+            <p><%=@project.description%></p></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Select Developer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%@tasks.each do |task|%>
+                    <tr>
+                      <td><%=task.description%></td>
+                      <td>
+                      	<select onchange="map_developer_to_task('<%=task.id%>',this.value);">
+                      		<option value="option">Select Developer</option>
+                      		<%@developers.each do |developer|%>
+                      				<option value="<%=developer.id%>" <%="selected" if task.user_id==developer.id %>><%=developer.name%></option>
+                      		<%end%>
+                      	</select>
+                      </td>
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+		<div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Project Wise Stats</div>
+          <div class="card-body">
+		        <div class="row">
+		        <%project_keys=@projects.keys%>
+		        <%project_keys.each do |project|%>
+			        <div class="col-xl-3 col-sm-6 mb-3">
+			            <div class="card ">
+			              <div class="card-body">
+			                <%= pie_chart(@projects[project]) %>
+			              </div>
+			              <a class="card-footer" >
+			                <span class="float-left"><%=project%></span>
+			              </a>
+			            </div>
+			        </div>
+			    <%end%>
+		        </div>
+          </div>
+        </div>
+      </div>
