@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= favicon_link_tag asset_path('favicon.jpg'), :rel => 'icon', :type =>  'image/jpg' %>
   <title>ProjectLifecycleManager</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -36,7 +37,7 @@
   </a>
 </body>
 <%else%>
-  <body class="bg-dark">
+  <body class="bg-dark" style="background-image: url('<%=asset_path('index_page_bckgrnd.png')%>') ;background-repeat: no-repeat;background-size: 70% 100%; background-position: 40%;">
 
   <div class="container">
       <%= yield %> 
