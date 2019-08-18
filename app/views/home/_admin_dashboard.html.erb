@@ -20,5 +20,8 @@
 			    <%end%>
 		        </div>
           </div>
+          <div class="card-footer small text-muted">
+            <%=render partial:"shared/paginate.html.erb",locals:{controller_name: "home", action_name:"home_page"}%>
+          </div>
         </div>
       </div>
