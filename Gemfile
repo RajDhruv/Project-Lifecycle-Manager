@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'platipus', '~> 0.1.0'
 gem 'custom_loader', '~> 0.2.0'
 gem 'will_paginate', '~> 3.1.7'
-gem 'chartkick', '~> 3.1'
+gem 'chartkick', '~> 3.4'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
